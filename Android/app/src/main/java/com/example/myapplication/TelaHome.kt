@@ -33,11 +33,8 @@ val PinkPrimary = Color(0xFFE6007E)
 val PinkLight = Color(0xFFF7DCE1)
 val BackgroundGray = Color(0xFFF2F2F2)
 
-/**
- * Tela principal - apenas o visual, sem lógica/estado.
- * Estrutura: Column raiz contendo os blocos empilhados de cima para baixo,
- * igual ao que vimos nas aulas de Compose (Column, Row, Surface, Spacer).
- */
+
+
 @Composable
 fun TelaHome() {
     Column(
@@ -46,34 +43,32 @@ fun TelaHome() {
             .background(BackgroundGray)
     ) {
         CabecalhoRosa()
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(50.dp))
         SaldoConta()
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(50.dp))
         AcoesRapidas()
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(50.dp))
         BannerInvestimentos()
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         CartaoMeusCartoes()
-        Spacer(modifier = Modifier.height(12.dp))
+        Spacer(modifier = Modifier.height(20.dp))
         CartaoEmprestimo()
     }
 }
 
-// ---------- Topo rosa: ícones + card "Seu Score aumentou" ----------
 @Composable
 fun CabecalhoRosa() {
     Column(
         modifier = Modifier
             .fillMaxWidth()
             .background(PinkPrimary)
-            .padding(horizontal = 16.dp, vertical = 16.dp)
+            .padding(horizontal = 16.dp, vertical = 30.dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Ícone de perfil dentro de um círculo branco
             Box(
                 modifier = Modifier
                     .size(36.dp)
@@ -99,17 +94,15 @@ fun CabecalhoRosa() {
 
         Spacer(modifier = Modifier.height(16.dp))
 
-        // Card branco flutuante "Seu Score aumentou! Confira."
         Surface(
             modifier = Modifier.fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp),
-            color = Color.White,
-            shadowElevation = 3.dp
+            shape = RoundedCornerShape(22.dp),
+            color = Color.White
         ) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(16.dp),
+                    .padding(30.dp),
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically
             ) {
@@ -124,26 +117,25 @@ fun CabecalhoRosa() {
     }
 }
 
-// ---------- Saldo em conta ----------
+
 @Composable
 fun SaldoConta() {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp),
+            .padding(horizontal = 20.dp),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column {
-            Text(text = "Saldo em conta", fontSize = 14.sp, color = Color.Gray)
+            Text(text = "Saldo em conta", fontSize = 22.sp, color = Color.Gray)
             Spacer(modifier = Modifier.height(4.dp))
-            Text(text = "R$0,00", fontSize = 18.sp, fontWeight = FontWeight.Bold)
+            Text(text = "R$67,67", fontSize = 26.sp, fontWeight = FontWeight.Bold)
         }
         Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.DarkGray)
     }
 }
 
-// ---------- Linha de ações rápidas (PIX, Trazer dinheiro, Pagar, Recarga) ----------
 @Composable
 fun AcoesRapidas() {
     Row(
@@ -159,7 +151,6 @@ fun AcoesRapidas() {
     }
 }
 
-// Componente reutilizável: círculo rosa com ícone + texto embaixo
 @Composable
 fun AcaoCircular(icon: ImageVector, texto: String) {
     Column(
@@ -185,7 +176,6 @@ fun AcaoCircular(icon: ImageVector, texto: String) {
     }
 }
 
-// ---------- Banner "Investimentos" ----------
 @Composable
 fun BannerInvestimentos() {
     Surface(
@@ -198,28 +188,36 @@ fun BannerInvestimentos() {
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp),
+                .padding(horizontal = 16.dp, vertical = 35.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
-        ) {
+        ){
             Row(verticalAlignment = Alignment.CenterVertically) {
-                Icon(Icons.Default.TrendingUp, contentDescription = null, tint = Color.White)
-                Spacer(modifier = Modifier.width(12.dp))
+                Icon(
+                    imageVector = Icons.Default.TrendingUp,
+                    contentDescription = null,
+                    tint = Color.White,
+                    modifier = Modifier.size(32.dp)
+                )
+                Spacer(modifier = Modifier.width(22.dp))
                 Column {
-                    Text(text = "Investimentos", color = Color.White, fontWeight = FontWeight.Bold)
+                    Text(
+                        text = "Investimentos",
+                        color = Color.White,
+                        fontWeight = FontWeight.Bold,
+                        fontSize = 25.sp
+                    )
                     Text(
                         text = "Confira as melhores ações do momento!",
                         color = Color.White,
-                        fontSize = 12.sp
+                        fontSize = 18.sp
                     )
                 }
             }
-            Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.White)
         }
     }
 }
 
-// ---------- Card "Meus cartões" ----------
 @Composable
 fun CartaoMeusCartoes() {
     Surface(
@@ -242,7 +240,6 @@ fun CartaoMeusCartoes() {
     }
 }
 
-// ---------- Card "Empréstimo" ----------
 @Composable
 fun CartaoEmprestimo() {
     Surface(
@@ -261,14 +258,13 @@ fun CartaoEmprestimo() {
         ) {
             Column {
                 Text(text = "Empréstimo", fontWeight = FontWeight.Medium)
-                Text(text = "Valor disponível de até:", fontSize = 12.sp, color = Color.Gray)
+                Text(text = "Valor disponível de até: R$50.000", fontSize = 12.sp, color = Color.Gray)
             }
             Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.DarkGray)
         }
     }
 }
 
-// ---------- Preview para visualizar no Android Studio ----------
 @Preview(showBackground = true)
 @Composable
 fun TelaHomePreview() {
