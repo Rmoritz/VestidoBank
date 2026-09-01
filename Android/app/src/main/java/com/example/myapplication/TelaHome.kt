@@ -1,19 +1,18 @@
-
 package com.example.TelaHome
-
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
@@ -25,8 +24,6 @@ import androidx.compose.ui.unit.sp
 val PinkPrimary = Color(0xFFE6007E)
 val PinkLight = Color(0xFFF7DCE1)
 val BackgroundGray = Color(0xFFF2F2F2)
-
-
 
 @Composable
 fun TelaHome() {
@@ -65,8 +62,7 @@ fun CabecalhoRosa() {
             Box(
                 modifier = Modifier
                     .size(36.dp)
-                    .clip(RoundedCornerShape(50))
-                    .background(Color.White),
+                    .background(Color.White, RoundedCornerShape(50)),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -110,7 +106,6 @@ fun CabecalhoRosa() {
     }
 }
 
-
 @Composable
 fun SaldoConta() {
     Row(
@@ -145,21 +140,31 @@ fun AcoesRapidas() {
 }
 
 @Composable
-fun AcaoCircular(icon: ImageVector, texto: String) {
+fun AcaoCircular(
+    icon: ImageVector,
+    texto: String
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier.width(72.dp)
     ) {
-        Box(
-            modifier = Modifier
-                .size(56.dp)
-                .clip(RoundedCornerShape(50))
-                .background(PinkPrimary),
-            contentAlignment = Alignment.Center
+        Button(
+            onClick = {},
+            modifier = Modifier.size(56.dp),
+            shape = RoundedCornerShape(50),
+            colors = ButtonDefaults.buttonColors(containerColor = PinkPrimary),
+            contentPadding = PaddingValues(0.dp),
+            elevation = null
         ) {
-            Icon(imageVector = icon, contentDescription = texto, tint = Color.White)
+            Icon(
+                imageVector = icon,
+                contentDescription = texto,
+                tint = Color.White
+            )
         }
+
         Spacer(modifier = Modifier.height(6.dp))
+
         Text(
             text = texto,
             fontSize = 11.sp,
@@ -184,7 +189,7 @@ fun BannerInvestimentos() {
                 .padding(horizontal = 16.dp, vertical = 35.dp),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
-        ){
+        ) {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 Icon(
                     imageVector = Icons.Default.TrendingUp,
@@ -192,7 +197,9 @@ fun BannerInvestimentos() {
                     tint = Color.White,
                     modifier = Modifier.size(32.dp)
                 )
+
                 Spacer(modifier = Modifier.width(22.dp))
+
                 Column {
                     Text(
                         text = "Investimentos",
@@ -251,7 +258,11 @@ fun CartaoEmprestimo() {
         ) {
             Column {
                 Text(text = "Empréstimo", fontWeight = FontWeight.Medium)
-                Text(text = "Valor disponível de até: R$50.000", fontSize = 12.sp, color = Color.Gray)
+                Text(
+                    text = "Valor disponível de até: R$50.000",
+                    fontSize = 12.sp,
+                    color = Color.Gray
+                )
             }
             Icon(Icons.Default.ChevronRight, contentDescription = null, tint = Color.DarkGray)
         }

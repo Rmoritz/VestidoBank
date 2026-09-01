@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,6 +19,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -181,12 +184,13 @@ private fun ActionItem(
         modifier = modifier,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
-            modifier = Modifier
-                .size(59.dp)
-                .clip(CircleShape)
-                .background(VestidoPink),
-            contentAlignment = Alignment.Center
+        Button(
+            onClick = {},
+            modifier = Modifier.size(59.dp),
+            shape = CircleShape,
+            colors = ButtonDefaults.buttonColors(containerColor = VestidoPink),
+            contentPadding = PaddingValues(0.dp),
+            elevation = null
         ) {
             Icon(
                 painter = painterResource(id = iconRes),
