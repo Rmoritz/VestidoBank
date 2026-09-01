@@ -1,12 +1,6 @@
 
 package com.example.TelaHome
 
-// Obs: alguns ícones (TrendingUp, CreditCard, Diamond) fazem parte do pacote
-// "material-icons-extended". Se o seu projeto ainda não tiver essa dependência,
-// adicione no build.gradle.kts (app):
-//   implementation("androidx.compose.material:material-icons-extended:1.6.8")
-// Caso não queira adicionar a dependência, basta trocar por ícones do pacote
-// padrão (ex: Icons.Default.ShoppingCart, Icons.Default.Star, etc).
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -28,7 +22,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-// ---------- Cores usadas na tela (aproximadas do print) ----------
 val PinkPrimary = Color(0xFFE6007E)
 val PinkLight = Color(0xFFF7DCE1)
 val BackgroundGray = Color(0xFFF2F2F2)
